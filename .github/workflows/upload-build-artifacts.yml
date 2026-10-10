@@ -206,6 +206,7 @@ jobs:
          # Replace /path/to/firefox/... with the absolute path configured inside your runner environment
            cmake -S . -B build -DSPIDERMONKEY_DIST=${{ github.workspace }}/firefox/obj-nightmonkey-sm/dist
            cmake --build nightmonkey-build
+           cp -r ~/.mozbuild nightmonket-build
 
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
