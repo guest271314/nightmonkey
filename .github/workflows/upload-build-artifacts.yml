@@ -205,17 +205,17 @@ jobs:
         run: |
          # Replace /path/to/firefox/... with the absolute path configured inside your runner environment
            cmake -S . -B build -DSPIDERMONKEY_DIST=${{ github.workspace }}/firefox/obj-nightmonkey-sm/dist
-           cmake --build build
+           cmake --build nightmonkey-build
 
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
         with:
         name: nightmonkey-wasm32-shell
         path: |
-          build/bin/js
-          build/bin/js-inproc
-          build/bin/nightmonkey
-          build/bin/wasm-jit-runner
-          build/bin/inproc-shell.sh
+          nightmonkey-build/bin/js
+          nightmonkey-build/bin/js-inproc
+          nightmonkey-build/bin/nightmonkey
+          nightmonkey-build/bin/wasm-jit-runner
+          nightmonkey-build/bin/inproc-shell.sh
           if-no-files-found: error
 
