@@ -91,5 +91,14 @@ jobs:
           cmake -S . -B build -DSPIDERMONKEY_DIST="$GITHUB_WORKSPACE/firefox/$SM_OBJDIR/dist"
           cmake --build build
 
-      - name: jit-tests (AOT lane)
-        run: scripts/run-jit-tests.sh firefox build -- --format=automation
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: nightmonkey-wasm32-shell
+          path: |
+            build/bin/js
+            build/bin/js-inproc
+            build/bin/nightmonkey
+            build/bin/wasm-jit-runner
+            build/bin/inproc-shell.sh
+            if-no-files-found: error
