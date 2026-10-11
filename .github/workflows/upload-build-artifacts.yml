@@ -201,12 +201,14 @@ jobs:
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
         with:
-        name: nightmonkey-wasm32-shell
-        path: |
-          build/bin/js
-          build/bin/js-inproc
-          build/bin/nightmonkey
-          build/bin/wasm-jit-runner
-          build/bin/inproc-shell.sh
+          name: nightmonkey-wasm32-shell
+          path: |
+            build/bin/js
+            build/bin/js-inproc
+            build/bin/nightmonkey
+            build/bin/wasm-jit-runner
+            build/bin/inproc-shell.sh
+            build/.mozbuild
           if-no-files-found: error
+
 
